@@ -1,8 +1,12 @@
 # Tenzies Dice Game 🎲
 
+![Game Overview - win](./public/win.png)
+
 ## Description
 
+![Game Overview - start](./public/start.png)
 Tenzies is a simple, fun dice game built with React. The goal of the game is to roll the dice and get all the dice to show the same number.
+
 
 ## Features
 
