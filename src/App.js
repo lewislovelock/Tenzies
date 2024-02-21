@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Die from "./Die";
+import { nanoid } from "nanoid";
 
 function App() {
+  const [dice, setDice] = React.useState(allNewDice())
+
+  function allNewDice() {
+    let dice = []
+    for (let i =0 ; i < 10; i++) {
+      dice.push({
+        value: Math.ceil(Math.random() * 6), 
+        isHeld: false,
+        id: nanoid()
+      })
+    }
+    return dice 
+  }
+
+  const diceElements = dice.map(die => (
+    <Die key={die.id} value={die.value} />
+  ))
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <main>
+      <div className="dice-container">
+        {diceElements}
+      </div>
+      <button 
+        className='roll-dice' 
+        onClick={() => setDice(allNewDice())}
+      >
+        Roll
+      </button>
+    </main>
+  )
+};
 
 export default App;
